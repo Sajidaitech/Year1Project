@@ -8,45 +8,46 @@
  *
  * CEO and founder of bxCreative, LTD
  * http://bxcreative.com
+ * 
+ * Updated with modern styling and responsive support
  */
-
 
 /** RESET AND LAYOUT
 ===================================*/
-
 .bx-wrapper {
 	position: relative;
-	margin: 0 auto ;
+	margin: 0 auto;
 	padding: 0;
 	*zoom: 1;
+	max-width: 100%; /* Ensure slider is responsive */
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
 }
 
 .bx-wrapper img {
 	max-width: 100%;
+	width: 100%; /* Make images fill slider completely */
 	display: block;
+	height: auto; /* Maintain aspect ratio */
 }
 
 /** THEME
 ===================================*/
-
 .bx-wrapper .bx-viewport {
-	/*-moz-box-shadow: 0 0 5px #ccc;
-	-webkit-box-shadow: 0 0 5px #ccc;
-	box-shadow: 0 0 5px #ccc;
-	border: solid #fff 5px;
-	left: -5px;
-	background: #fff;*/
+	background: #fff;
+	border-radius: 8px; /* Rounded corners */
+	overflow: hidden;
+	/* Remove old styling and add transitions */
+	transition: all 0.3s ease;
 }
 
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
 	position: absolute;
-	bottom: -30px;
+	bottom: -40px; /* Moved further down */
 	width: 100%;
 }
 
 /* LOADER */
-
 .bx-wrapper .bx-loading {
 	min-height: 50px;
 	background: url(images/bx_loader.gif) center center no-repeat #fff;
@@ -59,16 +60,13 @@
 }
 
 /* PAGER */
-
 .bx-wrapper .bx-pager {
 	text-align: center;
 	font-size: .85em;
-	font-family: Arial;
+	font-family: Arial, sans-serif;
 	font-weight: bold;
 	color: #666;
 	padding-top: 20px;
-	
-	display:none;/**/
 }
 
 .bx-wrapper .bx-pager .bx-pager-item,
@@ -79,25 +77,23 @@
 }
 
 .bx-wrapper .bx-pager.bx-default-pager a {
-	background: #666;
+	background: #ddd; /* Lighter dots by default */
 	text-indent: -9999px;
 	display: block;
-	width: 10px;
-	height: 10px;
+	width: 12px; /* Slightly larger dots */
+	height: 12px;
 	margin: 0 5px;
 	outline: 0;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
+	border-radius: 50%; /* Fully round dots */
+	transition: all 0.2s ease; /* Smooth transitions */
 }
 
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .bx-wrapper .bx-pager.bx-default-pager a.active {
-	background: #000;
+	background: #7c33a9; /* Match with theme purple color */
 }
 
 /* DIRECTION CONTROLS (NEXT / PREV) */
-
 .bx-wrapper .bx-prev {
 	left: 10px;
 	background: url(images/controls.png) no-repeat 0 -32px;
@@ -110,10 +106,12 @@
 
 .bx-wrapper .bx-prev:hover {
 	background-position: 0 0;
+	opacity: 0.8; /* Slight opacity change on hover */
 }
 
 .bx-wrapper .bx-next:hover {
 	background-position: -43px 0;
+	opacity: 0.8;
 }
 
 .bx-wrapper .bx-controls-direction a {
@@ -125,6 +123,7 @@
 	height: 32px;
 	text-indent: -9999px;
 	z-index: 9999;
+	transition: all 0.2s ease; /* Smooth transitions */
 }
 
 .bx-wrapper .bx-controls-direction a.disabled {
@@ -132,7 +131,6 @@
 }
 
 /* AUTO CONTROLS (START / STOP) */
-
 .bx-wrapper .bx-controls-auto {
 	text-align: center;
 }
@@ -168,7 +166,6 @@
 }
 
 /* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
-
 .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
 	text-align: left;
 	width: 80%;
@@ -180,20 +177,45 @@
 }
 
 /* IMAGE CAPTIONS */
-
 .bx-wrapper .bx-caption {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background: #666\9;
 	background: rgba(80, 80, 80, 0.75);
 	width: 100%;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 .bx-wrapper .bx-caption span {
 	color: #fff;
-	font-family: Arial;
+	font-family: Arial, sans-serif;
 	display: block;
-	font-size: .85em;
-	padding: 10px;
+	font-size: 1em; /* Use relative units */
+	padding: 15px;
+	line-height: 1.4;
+}
+
+/* RESPONSIVE STYLES */
+@media screen and (max-width: 768px) {
+	.bx-wrapper .bx-controls-direction a {
+		top: 40%; /* Move controls down slightly on mobile */
+	}
+	
+	.bx-wrapper .bx-caption span {
+		font-size: 0.9em; /* Slightly smaller font on mobile */
+		padding: 10px;
+	}
+	
+	.bx-wrapper .bx-pager {
+		bottom: -30px; /* Move pager closer on mobile */
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.bx-wrapper .bx-controls-direction a {
+		width: 24px; /* Smaller controls on mobile */
+		height: 24px;
+		background-size: contain;
+	}
 }
